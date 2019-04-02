@@ -62,6 +62,58 @@ interface search_client {
 
 ```js
 interface search_index {
+
+    // Misc
+    function wait_task(taskID: int)
+    function get_status(taskID: int) return task_status_response
+    function get_app_id() return string
+    function clear(opts: request_options) return task_updated_response
+    function delete(opts: request_options) return task_deleted_response
+
+    // Indexing
+    function get_object<T>(objectID: string, opts: request_options) return <T>
+    function get_objects<T>(objectIDs: [string], opts: request_options) return [<T>]
+    function save_object<T>(object: <T>, opts: request_options) return task_created_object_id_response
+    function save_objects<T>(objects: [<T>], opts: request_options) return group_batch_response
+    function partial_update_object<T>(object: <T>, opts: request_options) return task_updated_response
+    function partial_update_objects<T>(objects: [<T>], opts: request_options) return group_batch_response
+    function delete_object(objectID: string, opts: request_options) return task_deleted_response
+    function delete_objects(objectIDs: [string], opts: request_options) return batch_response
+    function delete_by(opts: request_options) return task_updated_response
+    function batch(operations: [batch_operation], opts: request_options) return batch_response
+
+    // Query rules
+    function get_rule(objectID: string, opts: request_options) return rule
+    function save_rule(rule: rule, forward_to_replicas: bool = false, opts: request_options) return task_updated_response
+    function save_rules(rule: [rule], forward_to_replicas: bool = false, clear_existing_rules: bool = false, opts: request_options) return task_updated_response
+    function clear_rules(forward_to_replicas: bool = false, opts: request_options) return task_updated_response
+    function delete_rule(objectID: string, forward_to_replicas: bool = false, opts: request_options) return task_updated_response
+
+    // Synonyms
+    function get_synonym(objectID: string, opts: request_options) return synonym
+    function save_synonym(synonym: synonym, forward_to_replicas: bool = false, opts: request_options) return task_updated_response
+    function save_synonyms(synonym: [synonym], forward_to_replicas: bool = false, replace_existing_synonyms: bool = false, opts: request_options) return task_updated_response
+    function clear_synonyms(forward_to_replicas: bool = false, opts: request_options) return task_updated_response
+    function delete_synonym(objectID: string, forward_to_replicas: bool = false, opts: request_options) return task_deleted_response
+
+    // Browsing
+    function browse(query string, params: [browse_parameter], opts: request_options) return browse_response
+    function browse_objects(params: [query_browse_parameter], opts: request_options) return object_iterator
+    function browse_rules(opts: request_options) return rule_iterator
+    function browse_synonyms(opts: request_options) return synonym_iterator
+
+    // Replacing
+    function replace_all_objects<T>(objects: <T>, opts: request_options)
+    function replace_all_rules(rules: [rule], forward_to_replicas: bool = false, opts: request_options) return task_updated_response
+    function replace_all_synonyms(synonyms: [synonym], forward_to_replicas: bool = false, opts: request_options) return task_updated_response
+
+    // Searching
+    function search(query string, params: [search_parameter], opts: request_options) return query_response
+    function search_for_facet_values(facet_name: string, facet_query: string, params: [search_parameter], opts: request_options) return query_response
+    function search_rules(query string, params: [rule_search_parameter], opts: request_options) return rule_query_response
+    function search_synonyms(query string, params: [synonym_search_parameter], opts: request_options) return synonym_query_response
+
+
 }
 ```
 
@@ -75,6 +127,16 @@ enum scope { "rules", "settings", "synonyms" }
 struct request_options {
     extra_headers: map<string, string>
     extra_url_params: map<string, string>
+}
+
+struct browse_parameter         // https://www.algolia.com/doc/api-reference/api-methods/browse/#method-param-browseparameters
+struct search_parameter         // https://www.algolia.com/doc/api-reference/api-methods/search/#method-param-searchparameters
+struct rule_search_parameter    // https://www.algolia.com/doc/api-reference/api-methods/search-rules/#parameters
+struct synonym_search_parameter // https://www.algolia.com/doc/api-reference/api-methods/search-synonyms/#parameters
+
+struct query_browse_parameter {
+    query: string
+    // + all browse_parameter fields
 }
 
 struct key // https://www.algolia.com/doc/api-reference/api-methods/add-api-key/#parameters
@@ -94,12 +156,29 @@ struct indexed_query {
     indexName: string
     // + all query fields
 }
+
+struct object_iterator<T>        // Language-specific representation of an iterator on arbitrary objects
+struct rule_iterator<rule>       // Language-specific representation of an iterator on rules
+struct synonym_iterator<synonym> // Language-specific representation of an iterator on synonyms
+
+struct rule    // https://www.algolia.com/doc/api-reference/api-methods/save-rule/#method-param-rule
+struct synonym // https://www.algolia.com/doc/api-reference/api-methods/save-synonym/#method-param-synonym-object
 ```
 
 ## Responses
 
 ```js
-struct search_response https://www.algolia.com/doc/api-reference/api-methods/search/#response
+struct query_response      // https://www.algolia.com/doc/api-reference/api-methods/search/#response
+struct rule_query_response // https://www.algolia.com/doc/api-reference/api-methods/search-rules/#response
+
+struct group_batch_response {
+    responses: [batch_response]
+}
+
+struct batch_response {
+    objectIDs: [string]
+    taskID: int
+}
 
 struct multiple_batch_response {
     objectIDs: [string]
@@ -126,7 +205,23 @@ struct get_logs_response     // https://www.algolia.com/doc/api-reference/api-me
 
 struct task_updated_response {
     taskID: int
-    uddatedAt: string // Format RFC3339 "2006-01-02T15:04:05Z07:00"
+    updatedAt: string // Format RFC3339 "2006-01-02T15:04:05Z07:00"
+}
+
+struct task_deleted_response {
+    taskID: int
+    deletedAt: string // Format RFC3339 "2006-01-02T15:04:05Z07:00"
+}
+
+struct task_status_response {
+    status: string
+    pendingTask: bool
+}
+
+struct task_created_object_id_response {
+    createdAt: string // Format RFC3339 "2006-01-02T15:04:05Z07:00"
+    objectID: string
+    taskID: string
 }
 
 struct created_response {
@@ -147,5 +242,7 @@ struct key_updated_response {
     updatedAt: string // Format RFC3339 "2006-01-02T15:04:05Z07:00"
 }
 
-struct list_api_keys_response https://www.algolia.com/doc/api-reference/api-methods/list-api-keys/?language=csharp#response
+struct list_api_keys_response // https://www.algolia.com/doc/api-reference/api-methods/list-api-keys/#response
+
+struct browse_response // https://www.algolia.com/doc/api-reference/api-methods/browse/#response
 ```
