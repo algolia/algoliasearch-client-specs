@@ -53,6 +53,9 @@ interface search_client {
     function remove_user_id(userID: string, opts: request_options) return deleted_response
     function search_user_ids(query: string, clusterName: string = null, page: int = 0, hitsPerPage: int = 20, opts: request_options) return search_user_ids_response
 
+    function set_personalization_strategy(strategy: strategy, opts: request_options) return set_personalization_strategy_response
+    function get_personalization_strategy(opts: request_options) return get_personalization_strategy_response
+
 }
 ```
 
@@ -166,6 +169,20 @@ struct synonym_iterator<synonym> // Language-specific representation of an itera
 struct rule     // https://www.algolia.com/doc/api-reference/api-methods/save-rule/#method-param-rule
 struct settings // https://www.algolia.com/doc/api-reference/settings-api-parameters/
 struct synonym  // https://www.algolia.com/doc/api-reference/api-methods/save-synonym/#method-param-synonym-object
+
+struct strategy {
+    eventsScoring: map<string, events_scoring>
+    facetsScoring: map<string, facets_scoring>
+}
+
+struct events_scoring {
+    score: int
+    type: string
+}
+
+struct facets_scoring {
+    score: int
+}
 ```
 
 ## Responses
@@ -248,4 +265,13 @@ struct key_updated_response {
 struct list_api_keys_response // https://www.algolia.com/doc/api-reference/api-methods/list-api-keys/#response
 
 struct browse_response // https://www.algolia.com/doc/api-reference/api-methods/browse/#response
+
+struct set_personalization_strategy_response {
+    updatedAt: string // Format RFC3339 "2006-01-02T15:04:05Z07:00"
+}
+
+struct get_personalization_strategy_response {
+    taskID: int
+    // + all fields fields
+}
 ```
