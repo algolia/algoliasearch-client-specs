@@ -188,6 +188,9 @@ old non-replica indices and then the replica ones.
 | `camelCaseAttributes`               | `[ "attribute1", "attribute2" ]`                                                                                            |
 | `decompoundedAttributes`            | `{ "de": ["attribute1", "attribute2"], "fi": ["attribute3"] }`                                                              |
 | `keepDiacriticsOnCharacters`        | `"øé"`                                                                                                                      |
+| `queryLanguages`                    | `["en", "fr"]` |
+| `alternativesAsExact`               | `["ignorePlurals"]` |
+| `advancedSyntaxFeatures`            | `["exactPhrase"]` |
 
 * Wait for the collected tasks to terminate with **waitTask**
 * Get the settings with **getSettings** and check that they correspond to the ones that were inserted
