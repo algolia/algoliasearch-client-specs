@@ -113,7 +113,9 @@ interface search_index {
     function search_rules(query string, params: [rule_search_parameter], opts: request_options) return rule_query_response
     function search_synonyms(query string, params: [synonym_search_parameter], opts: request_options) return synonym_query_response
 
-
+    // Settings
+    function get_settings(opts: request_options) return settings
+    function set_settings(settings: settings, opts: request_options) return task_updated_response
 }
 ```
 
@@ -161,8 +163,9 @@ struct object_iterator<T>        // Language-specific representation of an itera
 struct rule_iterator<rule>       // Language-specific representation of an iterator on rules
 struct synonym_iterator<synonym> // Language-specific representation of an iterator on synonyms
 
-struct rule    // https://www.algolia.com/doc/api-reference/api-methods/save-rule/#method-param-rule
-struct synonym // https://www.algolia.com/doc/api-reference/api-methods/save-synonym/#method-param-synonym-object
+struct rule     // https://www.algolia.com/doc/api-reference/api-methods/save-rule/#method-param-rule
+struct settings // https://www.algolia.com/doc/api-reference/settings-api-parameters/
+struct synonym  // https://www.algolia.com/doc/api-reference/api-methods/save-synonym/#method-param-synonym-object
 ```
 
 ## Responses
