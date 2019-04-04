@@ -72,6 +72,7 @@ interface search_index {
     function get_app_id() return string
     function clear(opts: request_options) return task_updated_response
     function delete(opts: request_options) return task_deleted_response
+    function delete_replica(replica_name: string, opts: request_options)
 
     // Indexing
     function get_object<T>(objectID: string, opts: request_options) return <T>
