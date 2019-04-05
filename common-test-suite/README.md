@@ -31,6 +31,8 @@
   * [Tests (analytics)](#tests-analytics)
     * [AB testing](#ab-testing)
     * [AA testing](#aa-testing)
+  * [Tests (insights)](#tests-insights)
+    * [Sending events](#sending-events)
   * [Tests (backward compatibility)](#tests-backward-compatibility)
     * [Old settings](#old-settings)
     * [Query rules v1](#query-rules-v1)
@@ -909,6 +911,128 @@ Where:
 ```
 
 * Retrieve the added AB test using **getABTest** thanks to its collected abTestID and check that the retrieved AB test’s `name`, `endAt` and variants’ `index`, `trafficPercentage` and `customSearchParameters` fields correspond to the ones of the original AB test (other fields are generated so you shouldn’t have to check them). Finally check that the `status` field of the retrieved AB test is not `stopped`.
+
+---
+
+### Tests (insights)
+
+#### Sending events
+
+* Instantiate the client and index `sending_events`
+* Instantiate the insights client
+* Add the following dummy objects to index using **save_objects** and wait for this task to complete using the **wait_task**:
+
+```
+[
+  {"objectID": "one"},
+  {"objectID": "two"}
+]
+```
+
+* Perform a **send_event** with the following parameters:
+
+```
+{
+  "eventType": "click",
+  "eventName": "foo",
+  "index":     <INDEX_NAME>,
+  "userToken": "bar",
+  "objectIDs": ["one", "two"]
+}
+```
+
+* Perform a **send_events** with the following parameters:
+
+```
+{
+  "events": [
+    {
+      "eventType": "click",
+      "eventName": "foo",
+      "index":     <INDEX_NAME>,
+      "userToken": "bar",
+      "objectIDs": ["one", "two"]
+    },
+    {
+      "eventType": "click",
+      "eventName": "foo",
+      "index":     <INDEX_NAME>,
+      "userToken": "bar",
+      "objectIDs": ["one", "two"]
+    }
+  ]
+}
+```
+
+* Instantiate a new `insights_user_client` with `insights_client.user("bar")`
+* Using the `insights_user_client`, perform a **clicked_object_ids** with the following parameters:
+
+| Parameter   | Value            |
+| ----------- | ---------------- |
+| `eventName` | `"foo"`          |
+| `index`     | `<INDEX_NAME>`   |
+| `objectIDs` | `["one", "two"]` |
+
+* Perform a search query using **search** with an empty query and `clickAnalytics=true` and get back the `queryID` field from the response
+* Using the `insights_user_client`, perform a **clicked_object_ids_after_search** with the following parameters:
+
+| Parameter   | Value            |
+| ----------- | ---------------- |
+| `eventName` | `"foo"`          |
+| `index`     | `<INDEX_NAME>`   |
+| `objectIDs` | `["one", "two"]` |
+| `positions` | `[1, 2]`         |
+| `queryID`   | `<QUERY_ID>`     |
+
+* Using the `insights_user_client`, perform a **clicked_filters** with the following parameters:
+
+| Parameter   | Value                          |
+| ----------- | ------------------------------ |
+| `eventName` | `"foo"`                        |
+| `index`     | `<INDEX_NAME>`                 |
+| `filters`   | `["filter:foo", "filter:bar"]` |
+
+* Using the `insights_user_client`, perform a **converted_object_ids** with the following parameters:
+
+| Parameter   | Value            |
+| ----------- | ---------------- |
+| `eventName` | `"foo"`          |
+| `index`     | `<INDEX_NAME>`   |
+| `objectIDs` | `["one", "two"]` |
+
+* Using the `insights_user_client`, perform a **converted_object_ids_after_search** with the following parameters:
+
+| Parameter   | Value            |
+| ----------- | ---------------- |
+| `eventName` | `"foo"`          |
+| `index`     | `<INDEX_NAME>`   |
+| `objectIDs` | `["one", "two"]` |
+| `positions` | `[1, 2]`         |
+| `queryID`   | `<QUERY_ID>`     |
+
+* Using the `insights_user_client`, perform a **converted_filters** with the following parameters:
+
+| Parameter   | Value                          |
+| ----------- | ------------------------------ |
+| `eventName` | `"foo"`                        |
+| `index`     | `<INDEX_NAME>`                 |
+| `filters`   | `["filter:foo", "filter:bar"]` |
+
+* Using the `insights_user_client`, perform a **viewed_object_ids** with the following parameters:
+
+| Parameter   | Value            |
+| ----------- | ---------------- |
+| `eventName` | `"foo"`          |
+| `index`     | `<INDEX_NAME>`   |
+| `objectIDs` | `["one", "two"]` |
+
+* Using the `insights_user_client`, perform a **viewed_filters** with the following parameters:
+
+| Parameter   | Value                          |
+| ----------- | ------------------------------ |
+| `eventName` | `"foo"`                        |
+| `index`     | `<INDEX_NAME>`                 |
+| `filters`   | `["filter:foo", "filter:bar"]` |
 
 ---
 
