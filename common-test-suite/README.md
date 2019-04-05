@@ -119,6 +119,7 @@ old non-replica indices and then the replica ones.
 * Instantiate the client and index `indexing`
 * Add 1 record with **saveObject** with an objectID and collect taskID/objectID
 * Add 1 record with **saveObject** without an objectID and collect taskID/objectID
+* Perform a **saveObjects** with an empty set of objects and collect taskID
 * Add 2 records with **saveObjects** with an objectID and collect taskID/objectID
 * Add 2 records with **saveObjects** without an objectID and collect taskID/objectID
 * Sequentially send 10 batches of 100 objects with objectID from 1 to 1000 with **batch** and collect taskIDs/objectIDs
