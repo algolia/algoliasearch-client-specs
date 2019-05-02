@@ -718,21 +718,8 @@ For example, if today’s date is November 28th, 2018 and the API client is Go, 
 #### Personalization Strategy
 
 * Instantiate the client
-* Get the personalization strategy using the **getPersonalizationStrategy** method and check if the `taskID` key
-is inside the api response
-* Optionally, and at unit level, set the personalization strategy below using the **setPersonalizationStrategy** and make sure a POST to `1/recommendation/personalization/strategy` was made containing the following body:
-```
-{
-    'eventsScoring': {
-        'Add to cart': {'score': 50, 'type': 'conversion'},
-        'Purchase': {'score': 100, 'type': 'conversion'}
-    },
-    'facetsScoring': {
-        'brand': {'score': 100},
-        'categories': {'score': 10}
-    }
-}
-```
+* Perform a **getPersonalizationStrategy** call and ensure it does return a non-empty strategy
+
 ---
 
 ### Tests (account)
