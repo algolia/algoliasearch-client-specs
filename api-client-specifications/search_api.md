@@ -41,7 +41,7 @@ interface search_client {
 
     // Multiple* methods
     function multiple_batch(operations: [indexed_operation], opts: request_options) return multiple_batch_response
-    function multiple_get_objects<T>(requests: [indexed_get_object], opts: request_options) return <T>
+    function multiple_get_objects<T>(requests: [indexed_get_object], opts: request_options) return [<T>]
     function multiple_queries(queries: [indexed_query], opts: request_options) return multiple_queries_response
 
     // Multi-Cluster Management (MCM) methods
