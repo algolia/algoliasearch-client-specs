@@ -2,10 +2,10 @@
 
 ## Table of Contents
 
-* [`insights_client` interface](#insights_client-interface)
-* [`insights_user_client` interface](#insights_user_client-interface)
-* [Objects](#objects)
-* [Responses](#responses)
+- [`insights_client` interface](#insights_client-interface)
+- [`insights_user_client` interface](#insights_user_client-interface)
+- [Objects](#objects)
+- [Responses](#responses)
 
 ## `insights_client` interface
 
@@ -24,11 +24,11 @@ interface insights_user_client {
     function clicked_object_ids(eventName: string, indexName: string, objectIDs: [string], opts: request_options) return status_message_response
     function clicked_object_ids_after_search(eventName: string, indexName: string, objectIDs: [string], positions: [int], queryID: string, opts: request_options) return status_message_response
     function clicked_filters(eventName: string, indexName: string, filters: [string], opts: request_options) return status_message_response
-    
+
     function converted_object_ids(eventName: string, indexName: string, objectIDs: [string], opts: request_options) return status_message_response
     function converted_object_ids_after_search(eventName: string, indexName: string, objectIDs: [string], queryID: string, opts: request_options) return status_message_response
     function converted_filters(eventName: string, indexName: string, filters: [string], opts: request_options) return status_message_response
-    
+
     function viewed_object_ids(eventName: string, indexName: string, objectIDs: [string], opts: request_options) return status_message_response
     function viewed_filters(eventName: string, indexName: string, filters: [string], opts: request_options) return status_message_response
 }

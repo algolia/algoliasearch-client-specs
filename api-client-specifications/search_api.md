@@ -2,14 +2,27 @@
 
 ## Table of Contents
 
-* [`search_client` interface](#search_client-interface)
-* [`search_index` interface](#search_index-interface)
-* [Objects](#objects)
-* [Responses](#responses)
+- [`account_client` interface](#account_client-interface)
+- [`search_client` interface](#search_client-interface)
+- [`search_index` interface](#search_index-interface)
+- [Objects](#objects)
+- [Responses](#responses)
 
 ## `search_client` interface
 
-* Inter-application **but** cross-index operations
+- Cross-application **and** cross-index operations
+
+```java
+interface account_client {
+
+    function copy_index(source: search_index, destination: search_index) returns waitable
+
+}
+```
+
+## `search_client` interface
+
+- Inter-application **but** cross-index operations
 
 ```java
 interface search_client {
@@ -61,9 +74,9 @@ interface search_client {
 
 ## `search_index` interface
 
-* Inter-application **and** inter-index operations
+- Inter-application **and** inter-index operations
 
-```js
+```ts
 interface search_index {
 
     // Misc
@@ -125,7 +138,7 @@ interface search_index {
 
 ## Objects
 
-```js
+```ts
 enum log_type { "all", "query", "build", "error" }
 
 enum scope { "rules", "settings", "synonyms" }
@@ -188,7 +201,19 @@ struct facets_scoring {
 
 ## Responses
 
-```js
+All response objects are implemented the `waitable` interface in order for the
+user to be able to wait their completion without dealing with the low-level
+details.
+
+```ts
+interface waitable {
+
+    function wait() return error
+
+}
+```
+
+```ts
 struct query_response      // https://www.algolia.com/doc/api-reference/api-methods/search/#response
 struct rule_query_response // https://www.algolia.com/doc/api-reference/api-methods/search-rules/#response
 
