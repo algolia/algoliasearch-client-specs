@@ -932,7 +932,8 @@ Where:
   "eventName": "foo",
   "index":     <INDEX_NAME>,
   "userToken": "bar",
-  "objectIDs": ["one", "two"]
+  "objectIDs": ["one", "two"],
+  "timestamp": <TWO_DAYS_AGO_IN_MILLISECONDS>
 }
 ```
 
@@ -946,14 +947,16 @@ Where:
       "eventName": "foo",
       "index":     <INDEX_NAME>,
       "userToken": "bar",
-      "objectIDs": ["one", "two"]
+      "objectIDs": ["one", "two"],
+      "timestamp": <TWO_DAYS_AGO_IN_MILLISECONDS>
     },
     {
       "eventType": "click",
       "eventName": "foo",
       "index":     <INDEX_NAME>,
       "userToken": "bar",
-      "objectIDs": ["one", "two"]
+      "objectIDs": ["one", "two"],
+      "timestamp": <TWO_DAYS_AGO_IN_MILLISECONDS>
     }
   ]
 }
