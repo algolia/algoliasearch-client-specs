@@ -61,15 +61,15 @@ on implementations. The list is to be considered as a required minimum.
 To ease the testing process, all configuration must be passed via environment
 variables. To run the tests, the following environment variables must be set:
 
-| Name                         | Value                    |
-| ---------------------------- | ------------------------ |
-| `ALGOLIA_APPLICATION_ID_1`   | `NOCTT5TZUU`             |
-| `ALGOLIA_ADMIN_KEY_1`        | (Personify `NOCTT5TZUU`) |
-| `ALGOLIA_SEARCH_KEY_1`       | (Personify `NOCTT5TZUU`) |
-| `ALGOLIA_APPLICATION_ID_2`   | `UCX3XB3SH4`             |
-| `ALGOLIA_ADMIN_KEY_2`        | (Personify `UCX3XB3SH4`) |
-| `ALGOLIA_APPLICATION_ID_MCM` | `5QZOBPRNH0`             |
-| `ALGOLIA_ADMIN_KEY_MCM`      | (Personify `5QZOBPRNH0`) |
+| Name                         | Value                                             |
+| ---------------------------- | ------------------------------------------------- |
+| `ALGOLIA_APPLICATION_ID_1`   | `NOCTT5TZUU`                                      |
+| `ALGOLIA_ADMIN_KEY_1`        | (Personify `NOCTT5TZUU`, then get the admin key)  |
+| `ALGOLIA_SEARCH_KEY_1`       | (Personify `NOCTT5TZUU`, then get the search key) |
+| `ALGOLIA_APPLICATION_ID_2`   | `UCX3XB3SH4`                                      |
+| `ALGOLIA_ADMIN_KEY_2`        | (Personify `UCX3XB3SH4`, then get the admin key)  |
+| `ALGOLIA_APPLICATION_ID_MCM` | `5QZOBPRNH0`                                      |
+| `ALGOLIA_ADMIN_KEY_MCM`      | (Personify `5QZOBPRNH0`, then get the admin key)  |
 
 
 Application `NOCTT5TZUU` must be used for all the tests except the MCM tests
