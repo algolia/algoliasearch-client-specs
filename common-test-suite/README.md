@@ -16,6 +16,7 @@
     * [Query rules](#query-rules)
     * [Batching](#batching)
     * [Replacing](#Replacing)
+    * [Exists](#Exists)
   * [Tests (client)](#tests-client)
     * [Copy index](#copy-index)
     * [Multi Cluster Management (MCM)](#multi-cluster-management-mcm)
@@ -522,6 +523,13 @@ old non-replica indices and then the replica ones.
 * Check that rule with `objectID="two"` does exist using **getRule**
 * Check that synonym with `objectID="one"` doesn’t exist using **getSynonym**
 * Check that synonym with `objectID="two"` does exist using **getSynonym**
+
+#### Exists
+
+* Instantiate the client and index `exists`
+* Check that the index doesn't exist using **exists**
+* Save an object to the index and wait for its completion using **waitTask**
+* Check that the index exists using **exists**
 
 ---
 
