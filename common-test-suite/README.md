@@ -707,6 +707,10 @@ For example, if today’s date is November 28th, 2018 and the API client is Go, 
 
 #### DNS timeout
 
+* Mock the HTTP layer:
+  * Make a connect timeout last exactly 2 seconds
+  * Make a 200 respond in exactly 10 milliseconds
+  * Make any request to a host that doesn't match the pattern `"{appID}-1.algolianet.com"` time out
 * Instantiate the client with the regular credentials but provides the following host (in that order):
 
 ```
@@ -721,7 +725,7 @@ For example, if today’s date is November 28th, 2018 and the API client is Go, 
 * Start a timer
 * Perform 10 sequential calls to Algolia using the client’s **listIndices** methods and check that no error happened at each call
 * Stop the timer
-* Check that the timer’s delta is lower than 5 seconds
+* Check that the timer’s delta is lower than 3 seconds
 
 #### Personalization Strategy
 
