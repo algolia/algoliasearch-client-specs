@@ -133,6 +133,9 @@ interface search_index {
     // Settings
     function get_settings(opts: request_options) return settings
     function set_settings(settings: settings, opts: request_options) return task_updated_response
+
+    // Exists
+    function exists() return bool
 }
 ```
 
