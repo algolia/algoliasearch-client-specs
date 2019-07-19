@@ -138,6 +138,25 @@ interface search_index {
 
     // Exists
     function exists() return bool
+
+    // find_first_object search iteratively through the search response `hits`
+    // field to find the first response hit that would match against the given
+    // `filter_func` function.
+    //
+    // If no object has been found within the first result set, the function
+    // will perform a new search operation on the next page of results, if any,
+    // until a matching object is found or the end of results, whichever
+    // happens first.
+    //
+    // To prevent the iteration through pages of results, `do_not_paginate`
+    // parameter can be set to true. This will stop the function at the end of
+    // the first page of search results even if no object does match.
+    function find_first_object<T>(
+        filter_func: function (object: T) return bool, // function matching a specific record
+        query: string,                                    // the search query
+        do_not_paginate: bool = false,                    // prevent pagination
+        params: map[string, object]                       // any search parameter
+    ) return object_with_position<T>
 }
 ```
 
@@ -204,6 +223,12 @@ struct facets_scoring {
 }
 
 struct secured_api_key_restriction // https://www.algolia.com/doc/api-reference/api-methods/generate-secured-api-key/#parameters
+
+struct object_with_position<T> {
+  object: T
+  position: int
+  page: int
+}
 ```
 
 ## Responses
