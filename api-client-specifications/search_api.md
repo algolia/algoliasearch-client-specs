@@ -246,7 +246,13 @@ interface waitable {
 ```
 
 ```ts
-struct query_response      // https://www.algolia.com/doc/api-reference/api-methods/search/#response
+struct query_response {    // https://www.algolia.com/doc/api-reference/api-methods/search/#response
+    // get_object_id_position returns the position (0-based) within the `hits`
+    // result list of the record matching against the given objectID. If the
+    // objectID is not found, -1 is returned.
+    function get_object_id_position(objectID: string) return int
+}
+
 struct rule_query_response // https://www.algolia.com/doc/api-reference/api-methods/search-rules/#response
 
 struct group_batch_response {
