@@ -234,8 +234,8 @@ old non-replica indices and then the replica ones.
 
 ```
 [
-  {"company": "Algolia", "name": "Julien Lemoine"},
-  {"company": "Algolia", "name": "Nicolas Dessaigne"},
+  {"company": "Algolia", "name": "Julien Lemoine", "objectID": "julien-lemoine"},
+  {"company": "Algolia", "name": "Nicolas Dessaigne", "objectID": "nicolas-dessaigne"},
   {"company": "Amazon", "name": "Jeff Bezos"},
   {"company": "Apple", "name": "Steve Jobs"},
   {"company": "Apple", "name": "Steve Wozniak"},
@@ -258,6 +258,9 @@ old non-replica indices and then the replica ones.
 
 * Wait for the collected tasks to terminate using **waitTask**
 * Perform a search query using **search** with the query `"algolia"` and no parameter and check that the number of returned hits is equal to 2
+* Call **get_object_id_position** with the objectID `"nicolas-dessaigne"` on the previous search response and check that it returns `0`
+* Call **get_object_id_position** with the objectID `"julien-lemoine"` on the previous search response and check that it returns `1`
+* Call **get_object_id_position** with the objectID `""` on the previous search response and check that it returns `-1`
 * Call **find_first_object** with the following parameters and check that no object is found
 
 | Parameter         | Value                                  |
