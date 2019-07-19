@@ -258,6 +258,51 @@ old non-replica indices and then the replica ones.
 
 * Wait for the collected tasks to terminate using **waitTask**
 * Perform a search query using **search** with the query `"algolia"` and no parameter and check that the number of returned hits is equal to 2
+* Call **find_first_object** with the following parameters and check that no object is found
+
+| Parameter         | Value                                  |
+| ----------------- | -------------------------------------- |
+| `filter_func`     | Function always returning `false`      |
+| `query`           | `""`                                   |
+| `do_not_paginate` | `false`                                |
+| `params`          | None                                   |
+
+* Call **find_first_object** with the following parameters and check that the first object is returned with a `position=0` and `page=0`
+
+| Parameter         | Value                                  |
+| ----------------- | -------------------------------------- |
+| `filter_func`     | Function always returning `true`       |
+| `query`           | `""`                                   |
+| `do_not_paginate` | `false`                                |
+| `params`          | None                                   |
+
+* Call **find_first_object** with the following parameters and check that no object is found
+
+| Parameter         | Value                                                                    |
+| ----------------- | ------------------------------------------------------------------------ |
+| `filter_func`     | Function returning `true` when an object with `company="Apple"` is found |
+| `query`           | `"algolia"`                                                              |
+| `do_not_paginate` | `false`                                                                  |
+| `params`          | None                                                                     |
+
+* Call **find_first_object** with the following parameters and check that no object is found
+
+| Parameter         | Value                                                                    |
+| ----------------- | ------------------------------------------------------------------------ |
+| `filter_func`     | Function returning `true` when an object with `company="Apple"` is found |
+| `query`           | `""`                                                                     |
+| `do_not_paginate` | `true`                                                                   |
+| `params`          | `hitsPerPage=5`                                                          |
+
+* Call **find_first_object** with the following parameters and check that the first object is returned with a `position=0` and `page=2`
+
+| Parameter         | Value                                                                    |
+| ----------------- | ------------------------------------------------------------------------ |
+| `filter_func`     | Function returning `true` when an object with `company="Apple"` is found |
+| `query`           | `""`                                                                     |
+| `do_not_paginate` | `false`                                                                  |
+| `params`          | `hitsPerPage=5`                                                          |
+
 * Perform a search using **search** with the query `"elon"` and the following parameter and check that the queryID field from the response is not empty
 
 | Parameter        | Value  |
