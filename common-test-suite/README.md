@@ -813,6 +813,15 @@ For example, if today’s date is November 28th, 2018 and the API client is Go, 
 * Perform an empty search operation to index1 using **search** and check that no error happens
 * Perform an empty search operation to index2 using **search** and check that an error do happen
 
+### Expired secured API keys
+
+* Generate a SecuredAPIKey expiring in 10 minutes
+* Call get_secured_api_key_remaining_validity with the given SecuredAPIKey
+* Assert that the result is > 0
+* Generate a SecuredAPIKey which expired 10 minutes ago
+* Call get_secured_api_key_remaining_validity with the given SecuredAPIKey
+* Assert that the result is < 0
+
 ---
 
 ### Tests (analytics)

@@ -51,6 +51,9 @@ interface search_client {
     function delete_api_key(key: key, opts: request_options) return deleted_response
     function restore_api_key(keyID: string, opts: request_options) return created_response
     function list_api_keys(opts: request_options) return list_api_keys_response
+    // Returns the remaining time in seconds with an integer or if the language supports it, preferably return a "duration" value like a DateTime
+    function get_secured_api_key_remaining_validity(securedAPIKey: string) return int
+    function generate_secured_api_key(parentKey: string, restriction: secured_api_key_restriction) return secured_api_key
 
     // Multiple* methods
     function multiple_batch(operations: [indexed_operation], opts: request_options) return multiple_batch_response
@@ -200,6 +203,8 @@ struct events_scoring {
 struct facets_scoring {
     score: int
 }
+
+struct secured_api_key_restriction // https://www.algolia.com/doc/api-reference/api-methods/generate-secured-api-key/#parameters
 ```
 
 ## Responses
