@@ -1,4 +1,4 @@
-# Algolia API Clients - Specs & CTS
+# Algolia API Clients - Specs & common test suite
 
 This repository serves as a technical documentation of the public API of the
 Algolia API Clients. It covers both the public API (methods, functions, etc.)
