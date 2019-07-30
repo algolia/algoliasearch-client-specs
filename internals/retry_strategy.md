@@ -1,4 +1,4 @@
-# Network
+# Retry strategy
 
 - Lets us test the retry strategy as a separate component
 - No network involved so it could easily be unit-tested
