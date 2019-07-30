@@ -29,6 +29,7 @@
     * [Copy index](#copy-index-1)
   * [Tests (secured API keys)](#tests-secured-api-keys)
     * [Generate secured API keys](#generate-secured-api-keys)
+    * [Expired Secured API keys](#expired-secured-api-keys)
   * [Tests (analytics)](#tests-analytics)
     * [AB testing](#ab-testing)
     * [AA testing](#aa-testing)
@@ -813,14 +814,14 @@ For example, if today’s date is November 28th, 2018 and the API client is Go, 
 * Perform an empty search operation to index1 using **search** and check that no error happens
 * Perform an empty search operation to index2 using **search** and check that an error do happen
 
-### Expired secured API keys
+#### Expired Secured API keys
 
-* Generate a SecuredAPIKey expiring in 10 minutes
-* Call get_secured_api_key_remaining_validity with the given SecuredAPIKey
-* Assert that the result is > 0
-* Generate a SecuredAPIKey which expired 10 minutes ago
-* Call get_secured_api_key_remaining_validity with the given SecuredAPIKey
-* Assert that the result is < 0
+* Generate a secured API key expiring in 10 minutes
+* Call **get_secured_api_key_remaining_validity** with the given secured API key
+* Assert that the result is greater than 0s
+* Generate a secured API key which has expired 10 minutes ago
+* Call **get_secured_api_key_remaining_validity** with the given secured API key
+* Assert that the result is lower than 0s
 
 ---
 
