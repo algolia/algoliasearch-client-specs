@@ -36,6 +36,6 @@ across all our official API clients:
 
 ## 📦 What's included
 
- - 📜 [Public API Specifications (Specs)](api-clients-specifications/)
+ - 📜 [Public API Specifications (Specs)](api-client-specifications/)
  - ✅ [Common Test Suite (CTS)](common-test-suite/)
  - 🛠 [Implementation Details (Internals)](internals/)
