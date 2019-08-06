@@ -37,7 +37,7 @@ interface search_client {
       // 4. If no `validUntil` is found, return the following error:
       //    "no `validUntil` parameter found, please make sure the secured API key has one"
       // 5. Otherwise, extract the `XXX` UNIX timestamp (in seconds) and return
-      //    the following evaluation: `time.now - XXX`
+      //    the following evaluation: `XXX - time.now`
   }
 
 }
