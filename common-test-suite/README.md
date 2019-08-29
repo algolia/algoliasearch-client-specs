@@ -389,7 +389,7 @@ old non-replica indices and then the replica ones.
 ]
 ```
 
-* Set **attributesForFaceting** to `["brand"]` using **setSettings** and collect the taskID
+* Set **attributesForFaceting** to `["brand", "model"]` using **setSettings** and collect the taskID
 * Save the following rule using **saveRule** and collect the taskID
 
 ```
@@ -420,7 +420,6 @@ old non-replica indices and then the replica ones.
 
 * Save the following rules using **batchRules** and collect the taskID
 
-```
 [
   {
     "objectID": "query_edits",
@@ -435,11 +434,34 @@ old non-replica indices and then the replica ones.
         }
       }
     }
-  }
+  },
+
+  {
+    "objectID": "query_promo",
+    "consequence": {
+      "params": [
+        {"filters": "brand:OnePlus"},
+      ]
+    }
+  },
+
+  {
+    "objectID": "query_promo_summer",
+    "condition": {
+      "context": "summer"
+    }
+    "consequence": {
+      "params": [
+        {"filters": "model:One"},
+      ]
+    }
+  },
+
 ]
 ```
 
 * Wait for the previous tasks to complete using **waitTask**
+* Search with an empty query and the context `summer` and assert that the **`nbHits` is 1**
 * Retrieve all the rules using **getRule** and check that they were correctly saved
 * Retrieve all the rules using **searchRules** with {query: ""} and check that they were correctly saved
 * Iterate over all the rules using **ruleIterator** and check that they were correctly saved
