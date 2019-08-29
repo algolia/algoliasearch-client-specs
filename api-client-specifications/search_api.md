@@ -139,23 +139,28 @@ interface search_index {
     // Exists
     function exists() return bool
 
-    // find_first_object search iteratively through the search response `hits`
+    // find_object search iteratively through the search response `hits`
     // field to find the first response hit that would match against the given
-    // `filter_func` function.
+    // `filter_func` function. The name of the argument `filter_func` may change
+    // up the language, as example you may use `callback` in php.
     //
     // If no object has been found within the first result set, the function
     // will perform a new search operation on the next page of results, if any,
     // until a matching object is found or the end of results, whichever
     // happens first.
     //
-    // To prevent the iteration through pages of results, `do_not_paginate`
-    // parameter can be set to true. This will stop the function at the end of
+    // To prevent the iteration through pages of results, `paginate` in
+    // request_options can be set to false. This will stop the function at the end of
     // the first page of search results even if no object does match.
-    function find_first_object<T>(
+    
+    // Of course, the `opts` parameter, should be used behind the scenes by the
+    // search method. And, in same languages, the `opts` parameter may contain all
+    // the optional parameters.
+    function find_object<T>(
         filter_func: function (object: T) return bool, // function matching a specific record
-        query: string,                                    // the search query
-        do_not_paginate: bool = false,                    // prevent pagination
-        params: map[string, object]                       // any search parameter
+        query: string = '', // an optional the search query
+	paginate: bool = true, // an optional boolean to prevent pagination
+        opts: request_options // may contain the argument `query`, `pagination` or any search parameter
     ) return object_with_position<T>
 }
 ```
@@ -247,10 +252,10 @@ interface waitable {
 
 ```ts
 struct query_response {    // https://www.algolia.com/doc/api-reference/api-methods/search/#response
-    // get_object_id_position returns the position (0-based) within the `hits`
+    // get_object_position returns the position (0-based) within the `hits`
     // result list of the record matching against the given objectID. If the
     // objectID is not found, -1 is returned.
-    function get_object_id_position(objectID: string) return int
+    function get_object_position(objectID: string) return int
 }
 
 struct rule_query_response // https://www.algolia.com/doc/api-reference/api-methods/search-rules/#response
