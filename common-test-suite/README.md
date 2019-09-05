@@ -420,6 +420,7 @@ old non-replica indices and then the replica ones.
 
 * Save the following rules using **batchRules** and collect the taskID
 
+```
 [
   {
     "objectID": "query_edits",
@@ -435,28 +436,25 @@ old non-replica indices and then the replica ones.
       }
     }
   },
-
   {
     "objectID": "query_promo",
     "consequence": {
-      "params": [
-        {"filters": "brand:OnePlus"},
-      ]
+      "params": {
+        "filters": "brand:OnePlus"
+      }
     }
   },
-
   {
     "objectID": "query_promo_summer",
     "condition": {
       "context": "summer"
-    }
+    },
     "consequence": {
-      "params": [
-        {"filters": "model:One"},
-      ]
+      "params": {
+        "filters": "model:One"
+      }
     }
-  },
-
+  }
 ]
 ```
 
