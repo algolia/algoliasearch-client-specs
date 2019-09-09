@@ -30,7 +30,7 @@ across all our official API clients:
  - [algolia/algoliasearch-client-javascript](https://github.com/algolia/algoliasearch-client-javascript)
  - [algolia/algoliasearch-client-kotlin](https://github.com/algolia/algoliasearch-client-kotlin)
  - [algolia/algoliasearch-client-php](https://github.com/algolia/algoliasearch-client-php)
- - [algolia/algoliasearch-client-python](https://github.com/algolia/algoliasearch-client-ruby)
+ - [algolia/algoliasearch-client-python](https://github.com/algolia/algoliasearch-client-python)
  - [algolia/algoliasearch-client-ruby](https://github.com/algolia/algoliasearch-client-ruby)
  - [algolia/algoliasearch-client-scala](https://github.com/algolia/algoliasearch-client-scala)
 
