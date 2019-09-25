@@ -61,6 +61,7 @@ interface search_client {
 
     // Multi-Cluster Management (MCM) methods
     function assign_user_id(userID: string, clusterName: string, opts: request_options) return created_response
+    function assign_user_ids(userIDs: []string, clusterName: string, opts: request_options) return created_response
     function get_top_user_id(opts: request_options) return get_top_user_id_response
     function get_user_id(userID: string, opts: request_options) return get_user_id_response
     function list_clusters(opts: request_options) return list_clusters_response
@@ -152,7 +153,7 @@ interface search_index {
     // To prevent the iteration through pages of results, `paginate` in
     // request_options can be set to false. This will stop the function at the end of
     // the first page of search results even if no object does match.
-    
+
     // Of course, the `opts` parameter, should be used behind the scenes by the
     // search method. And, in same languages, the `opts` parameter may contain all
     // the optional parameters.

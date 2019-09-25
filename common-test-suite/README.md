@@ -667,10 +667,10 @@ old non-replica indices and then the replica ones.
 * Instantiate a new client with the MCM testing application `5QZOBPRNH0` (shared between all API client testing apps)
 * Retrieve all the clusters with **listClusters**
 * Check that there are at least 2 clusters in the list
-* Assign the following userID with **assignUserID** with the first cluster from the list we just retrieved:
+* Using the following convention:
 
 ```
-LANG-DATE-TIME-INSTANCE
+LANG-DATE-TIME-INSTANCE-USERID
 
 Where:
  * LANG is the API client language (e.g. scala/go/php/etc.)
@@ -680,15 +680,18 @@ Where:
    * the TRAVIS_JOB_NUMBER environment variable if available, otherwise
    * the current username on the system running the test if available, otherwise
    * "unknown"
+ * USERID is the user id
 
-For instance:  python-2019-01-01-10-10-05-unknown
+For instance:  python-2019-01-01-10-10-05-unknown-0
 ```
 
-* Loop until the assigned userID is found using **getUserID**
-* Search of the assigned userID using **searchUserIDs**
+* Assign the `USERID`=0  with **assignUserID** with the first cluster from the list we just retrieved
+* Assign the `USERID`=1 and `USERID`=2  with **assignUserIDs** with the first cluster from the list we just retrieved
+* Loop until the assigned userIDs are found using **getUserID**
+* Search of the assigned userIDs using **searchUserIDs**
 * List all userIDs using **listUserIDs** and check that the result set is not empty
 * Retrieve the top10 userIDs using **getTopUserIDs** and check that the result set is not empty
-* Remove the assigned userID using **removeUserID** (loop until the call succeeds, this is the only way to make this work)
+* Remove the assigned userIDs using **removeUserID** (loop until the call succeeds, this is the only way to make this work)
 * Loop until the removed userID cannot be found anymore using **getUserID** (loop until the call succeeds, this is the only way to make this work)
 * List all the userIDs using **listUserIDs** and and collect all the ones with the following prefix:
 
