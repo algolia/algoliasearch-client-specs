@@ -9,7 +9,6 @@
   * [Index naming convention](#index-naming-convention)
   * [Tests (index)](#tests-index)
     * [Indexing](#indexing)
-    * [Replica deletion](#replica-deletion)
     * [Settings](#settings)
     * [Search](#search)
     * [Synonyms](#synonyms)
@@ -140,21 +139,6 @@ old non-replica indices and then the replica ones.
 * Delete the 1000 remaining records with **clearObjects** and collect taskID
 * Wait for all collected tasks to terminate
 * Browse all objects with **browseObjects** and make sure that no records are returned
-
-#### Replica deletion
-
-* Instantiate the client and index `replica_indexing`
-* Add 1 record with **saveObject** and collect the taskID
-* Set the settings with **setSettings** using the following settings and collect the taskID:
-
-```
-{
-    "replicas": [<PRIMARY_INDEX_NAME>+"_replica"]
-}
-```
-
-* Wait for all collected tasks to terminate with **waitTask**
-* Delete the replica index with **delete_replica**
 
 #### Settings
 
