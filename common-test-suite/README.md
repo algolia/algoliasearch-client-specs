@@ -197,6 +197,8 @@ old non-replica indices and then the replica ones.
 | `alternativesAsExact`               | `["ignorePlurals"]`                                                                                                         |
 | `advancedSyntaxFeatures`            | `["exactPhrase"]`                                                                                                           |
 | `indexLanguages`                    | `["jp"]`                                                                                                                    |
+| `customNormalization`               |  `{"default": {"ä": "ae", "ö": "oe"}}}`
+|
 
 * Wait for the collected tasks to terminate with **waitTask**
 * Get the settings with **getSettings** and check that they correspond to the ones that were inserted
