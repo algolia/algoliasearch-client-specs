@@ -68,7 +68,7 @@ interface search_client {
     function list_user_ids(page: int = 0, hitsPerPage: int = 20, opts: request_options) return list_user_ids_response
     function remove_user_id(userID: string, opts: request_options) return deleted_response
     function search_user_ids(query: string, clusterName: string = null, page: int = 0, hitsPerPage: int = 20, opts: request_options) return search_user_ids_response
-    function has_pending_mappings(retrieveMappings: boolean = false, opts: request_options) return get_pending_mapping_response
+    function has_pending_mappings(retrieveMappings: boolean = false, opts: request_options) return has_pending_mappings_response
     function set_personalization_strategy(strategy: strategy, opts: request_options) return set_personalization_strategy_response
     function get_personalization_strategy(opts: request_options) return get_personalization_strategy_response
 
@@ -289,7 +289,7 @@ struct get_user_id_response     // https://www.algolia.com/doc/api-reference/api
 struct list_clusters_response   // https://www.algolia.com/doc/api-reference/api-methods/list-clusters/#response
 struct list_user_ids_response   // https://www.algolia.com/doc/api-reference/api-methods/list-user-id/#response
 struct search_user_ids_response // https://www.algolia.com/doc/api-reference/api-methods/search-user-id/#response
-struct get_pending_mapping_response {
+struct has_pending_mappings_response {
 	pending: boolean,
 	clusters: map<string, string[]>
 }
