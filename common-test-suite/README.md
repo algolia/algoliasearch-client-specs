@@ -694,6 +694,8 @@ For example, if today’s date is November 28th, 2018 and the API client is Go, 
 
 * Delete all the collected userIDs using **removeUserID**
 
+* Perform a **hasPendingMappings** with `retrieve_mappings = true` and ensure that the request is done without errors and that the response is not null/empty.
+
 #### API keys
 
 * Instantiate the client
