@@ -69,9 +69,6 @@ interface search_client {
     function remove_user_id(userID: string, opts: request_options) return deleted_response
     function search_user_ids(query: string, clusterName: string = null, page: int = 0, hitsPerPage: int = 20, opts: request_options) return search_user_ids_response
     function has_pending_mappings(retrieveMappings: boolean = false, opts: request_options) return has_pending_mappings_response
-    function set_personalization_strategy(strategy: strategy, opts: request_options) return set_personalization_strategy_response
-    function get_personalization_strategy(opts: request_options) return get_personalization_strategy_response
-
 }
 ```
 

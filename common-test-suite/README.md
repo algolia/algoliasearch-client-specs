@@ -23,7 +23,6 @@
     * [Get logs](#get-logs)
     * [Multiple Operations](#multiple-operations)
     * [DNS timeout](#dns-timeout)
-    * [Personalization Strategy](#personalization-strategy)
   * [Tests (account)](#tests-account)
     * [Copy index](#copy-index-1)
   * [Tests (secured API keys)](#tests-secured-api-keys)
@@ -34,6 +33,8 @@
     * [AA testing](#aa-testing)
   * [Tests (insights)](#tests-insights)
     * [Sending events](#sending-events)
+  * [Tests (recommendation)](#tests-recommendation)
+    * [Personalization Strategy](#personalization-strategy)
   * [Tests (backward compatibility)](#tests-backward-compatibility)
     * [Old settings](#old-settings)
     * [Query rules v1](#query-rules-v1)
@@ -786,11 +787,6 @@ For example, if today’s date is November 28th, 2018 and the API client is Go, 
 * Stop the timer
 * Check that the timer’s delta is lower than 3 seconds
 
-#### Personalization Strategy
-
-* Instantiate the client
-* Perform a **getPersonalizationStrategy** call and ensure it does return a non-empty strategy
-
 ---
 
 ### Tests (account)
@@ -1103,6 +1099,15 @@ Where:
 | `eventName` | `"foo"`                        |
 | `index`     | `<INDEX_NAME>`                 |
 | `filters`   | `["filter:foo", "filter:bar"]` |
+
+---
+
+### Tests (recommendation)
+
+#### Personalization Strategy
+
+* Instantiate the recommendation client
+* Perform a **getPersonalizationStrategy** call and ensure it does return a non-empty strategy
 
 ---
 
