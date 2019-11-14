@@ -413,6 +413,7 @@ old non-replica indices and then the replica ones.
     "objectID": "query_edits",
     "condition": {"anchoring": "is", "pattern": "mobile phone"},
     "consequence": {
+      "filterPromotes": false,
       "params": {
         "query": {
           "edits": [
