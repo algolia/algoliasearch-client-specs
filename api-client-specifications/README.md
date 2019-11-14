@@ -9,4 +9,3 @@ API clients as well as some details regarding some internal implementations.
 - [Analytics API](analytics_api.md)
 - [Insights API](insights_api.md)
 - [Recommendation API](recommendation_api.md)
-- [Network](network.md)
