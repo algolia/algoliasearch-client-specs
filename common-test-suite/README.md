@@ -411,7 +411,7 @@ old non-replica indices and then the replica ones.
 [
   {
     "objectID": "query_edits",
-    "condition": {"anchoring": "is", "pattern": "mobile phone"},
+    "condition": {"anchoring": "is", "pattern": "mobile phone", "alternatives": true},
     "consequence": {
       "filterPromotes": false,
       "params": {
