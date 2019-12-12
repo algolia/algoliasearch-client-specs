@@ -1073,7 +1073,21 @@ Where:
 #### Personalization Strategy
 
 * Instantiate the recommendation client
-* Perform a **getPersonalizationStrategy** call and ensure it does return a non-empty strategy
+* Perform a **setPersonalizationStrategy** call with the following strategy:
+```
+{
+   eventsScoring: [
+     { eventName: 'Add to cart', eventType: 'conversion', score: 50 },
+     { eventName: 'Purchase', eventType: 'conversion', score: 100 },
+   ],
+   facetsScoring: [
+     { facetName: 'brand', score: 100 },
+     { facetName: 'categories', score: 10 },
+   ],
+   personalizationImpact: 0,
+}
+```
+* Perform a **getPersonalizationStrategy** call and ensure it does return the same strategy used on **setPersonalizationStrategy**.
 
 ---
 
