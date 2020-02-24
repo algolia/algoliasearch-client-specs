@@ -109,13 +109,6 @@ name of the index that would be created should be:
 This naming enables us to run tests in parallel, across different environments
 (local computer, CI pipelines, etc.) without impacting other tests.
 
-On top of that, the test suite of each client should include a cleaning
-function that takes care of removing all indices older than one day (i.e.
-whose DATE time does not correspond to the current day) for the current API
-client/integration. This procedure ensure that we are not leaving undeleted
-indices in each account. This is a two-step process where we first delete the
-old non-replica indices and then the replica ones.
-
 ### Tests (index)
 
 #### Indexing
@@ -587,8 +580,9 @@ old non-replica indices and then the replica ones.
 * Instantiate the client and index `exists`
 * Check that the index doesn't exist using **exists**
 * Save an object to the index and wait for its completion using **waitTask**
-* Check that the index exists using **exists**
-
+* Check that the index exists using **exists**&
+* Delete the index using **delete** and wait for this task to complete using the **waitTask**
+* Check that the index doesn't exist using **exists**
 ---
 
 ### Tests (client)
@@ -941,17 +935,6 @@ Where:
 
 * Instantiate the client and index `aa_testing`
 * Instantiate the analytics client
-* Iterate over all the existing AB tests whose name matches the following prefix, using **getABTests**, and collect their abTestID
-
-```
-LANG-DATE-
-
-Where:
- * LANG corresponds to the current programming language
- * DATE corresponds to any date BUT today (this way, current day tests are not removing each other)
-```
-
-* Remove all the AB tests thanks to the collected abTestIDs using **deleteABTest**
 * Add the following dummy object to the index using **saveObject** and wait for this task to complete using the **waitTask** method
 
 ```
@@ -977,6 +960,10 @@ Where:
 ```
 
 * Retrieve the added AB test using **getABTest** thanks to its collected abTestID and check that the retrieved AB test’s `name`, `endAt` and variants’ `index`, `trafficPercentage` and `customSearchParameters` fields correspond to the ones of the original AB test (other fields are generated so you shouldn’t have to check them). Finally check that the `status` field of the retrieved AB test is not `stopped`.
+
+* Remove the added AB test using **deleteABTest** and wait for this task to complete using the **waitTask** method of the analytics client.
+
+* Try to perform an **getABTest** using the removed AB test and make sure that it fails because the AB test do not exists anymore.
 
 ---
 
