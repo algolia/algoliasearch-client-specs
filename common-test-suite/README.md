@@ -675,20 +675,6 @@ For instance:  python-2019-01-01-10-10-05-unknown-0
 * Retrieve the top10 userIDs using **getTopUserIDs** and check that the result set is not empty
 * Remove the assigned userIDs using **removeUserID** (loop until the call succeeds, this is the only way to make this work)
 * Loop until the removed userID cannot be found anymore using **getUserID** (loop until the call succeeds, this is the only way to make this work)
-* List all the userIDs using **listUserIDs** and and collect all the ones with the following prefix:
-
-```
-LANG-DATE
-
-Where:
- * LANG is the API client language (e.g. scala/go/php/etc.)
- * DATE corresponds to a date following to the following format YYYY-MM-DD but which is not today.
-
-For example, if today’s date is November 28th, 2018 and the API client is Go, we should collect userIDs with prefixes "go-2018-11-26", "go-2018-11-27" but not "php-2018-11-26" nor "go-2018-11-28".
-```
-
-* Delete all the collected userIDs using **removeUserID**
-
 * Perform a **hasPendingMappings** with `retrieve_mappings = true` and ensure that the request is done without errors and that the response is not null/empty.
 
 #### API keys
@@ -882,17 +868,6 @@ For example, if today’s date is November 28th, 2018 and the API client is Go, 
 
 * Instantiate the client and index1 `ab_testing` and index2 `ab_testing_dev`
 * Instantiate the analytics client
-* Iterate over all the existing AB tests whose name matches the following prefix, using **getABTests**, and collect their abTestID:
-
-```
-LANG-DATE-
-
-Where:
- * LANG corresponds to the current programming language
- * DATE corresponds to any date BUT today (this way, current day tests are not removing each other)
-```
-
-* Remove all the AB tests thanks to the collected abTestIDs using **deleteABTest**
 * Add the following dummy object to index1 using **saveObject** and wait for this task to complete using the **waitTask** method of index1:
 
 ```
