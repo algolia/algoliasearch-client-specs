@@ -64,16 +64,12 @@ ONCE THE CHANGES ARE REVIEWED AND MERGED, PLEASE FILL THE RELEASE AS WELL AS
 THE URL TO THE CHANGELOG ENTRY FOR THIS RELEASE IN THIS LIST.
 -->
 
-- [ ] Released in all API clients
-
-| API Client | Version | ChangeLog URL                   |
-| ---------- |:-------:|:-------------------------------:|
-| C#         |  X.Y.Z  | <--! URL TO CHANGELOG ENTRY --> |
-| Go         |  X.Y.Z  | <--! URL TO CHANGELOG ENTRY --> |
-| Java       |  X.Y.Z  | <--! URL TO CHANGELOG ENTRY --> |
-| JavaScript |  X.Y.Z  | <--! URL TO CHANGELOG ENTRY --> |
-| Kotlin     |  X.Y.Z  | <--! URL TO CHANGELOG ENTRY --> |
-| PHP        |  X.Y.Z  | <--! URL TO CHANGELOG ENTRY --> |
-| Python     |  X.Y.Z  | <--! URL TO CHANGELOG ENTRY --> |
-| Ruby       |  X.Y.Z  | <--! URL TO CHANGELOG ENTRY --> |
-| Scala      |  X.Y.Z  | <--! URL TO CHANGELOG ENTRY --> |
+ - [ ] C#
+ - [ ] Go
+ - [ ] Java
+ - [ ] JavaScript
+ - [ ] Kotlin
+ - [ ] PHP
+ - [ ] Python
+ - [ ] Ruby
+ - [ ] Scala
