@@ -193,6 +193,7 @@ This naming enables us to run tests in parallel, across different environments
 | `userData`                          | `{"customUserData": 42.0}` |
 | `indexLanguages`                    | `["jp"]`                                                                                                                    |
 | `customNormalization`               |  `{"default": {"ä": "ae", "ö": "oe"}}}`
+| `enablePersonalization`             | `true`                                                                                                                      |
 
 * Wait for the collected tasks to terminate with **waitTask**
 * Get the settings with **getSettings** and check that they correspond to the ones that were inserted
