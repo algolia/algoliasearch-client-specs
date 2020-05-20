@@ -34,6 +34,7 @@ GENERATE THIS LIST
  - [ ] Python
  - [ ] Ruby
  - [ ] Scala
+ - [ ] Swift
 
 **Documentation snippets**
 
@@ -54,6 +55,7 @@ GITHUB ISSUE.
  - [ ] Python
  - [ ] Ruby
  - [ ] Scala
+ - [ ] Swift
 
 **Releases**
 
@@ -73,3 +75,4 @@ THE URL TO THE CHANGELOG ENTRY FOR THIS RELEASE IN THIS LIST.
  - [ ] Python
  - [ ] Ruby
  - [ ] Scala
+ - [ ] Swift
