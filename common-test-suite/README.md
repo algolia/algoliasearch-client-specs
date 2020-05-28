@@ -70,11 +70,11 @@ variables. To run the tests, the following environment variables must be set:
 | `ALGOLIA_APPLICATION_ID_2`   | `UCX3XB3SH4`                                      |
 | `ALGOLIA_ADMIN_KEY_2`        | (Personify `UCX3XB3SH4`, then get the admin key)  |
 | `ALGOLIA_APPLICATION_ID_MCM` | `5QZOBPRNH0`                                      |
-| `ALGOLIA_ADMIN_KEY_MCM`      | (Personify `5QZOBPRNH0`, then get the admin key)  |
+| `ALGOLIA_ADMIN_KEY_MCM`      | (Personify `P0OGQ40IKV`, then get the admin key)  |
 
 
 Application `NOCTT5TZUU` must be used for all the tests except the MCM tests
-that needs to be done using application `5QZOBPRNH0` for which MCM has been
+that needs to be done using application `P0OGQ40IKV` for which MCM has been
 enabled. The second regular application `UCX3XB3SH4` is used to test the
 `AccountClient` features which are performing cross-application operations.
 
