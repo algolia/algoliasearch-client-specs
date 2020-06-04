@@ -69,7 +69,7 @@ variables. To run the tests, the following environment variables must be set:
 | `ALGOLIA_SEARCH_KEY_1`       | (Personify `NOCTT5TZUU`, then get the search key) |
 | `ALGOLIA_APPLICATION_ID_2`   | `UCX3XB3SH4`                                      |
 | `ALGOLIA_ADMIN_KEY_2`        | (Personify `UCX3XB3SH4`, then get the admin key)  |
-| `ALGOLIA_APPLICATION_ID_MCM` | `5QZOBPRNH0`                                      |
+| `ALGOLIA_APPLICATION_ID_MCM` | `P0OGQ40IKV`                                      |
 | `ALGOLIA_ADMIN_KEY_MCM`      | (Personify `P0OGQ40IKV`, then get the admin key)  |
 
 
