@@ -405,7 +405,7 @@ This naming enables us to run tests in parallel, across different environments
 [
   {
     "objectID": "query_edits",
-    "condition": {"anchoring": "is", "pattern": "mobile phone", "alternatives": true},
+    "conditions": [{"anchoring": "is", "pattern": "mobile phone", "alternatives": true}],
     "consequence": {
       "filterPromotes": false,
       "params": {
