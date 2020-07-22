@@ -1073,7 +1073,7 @@ Where:
 #### Personalization Strategy
 
 * Instantiate the recommendation client
-* Perform a **setPersonalizationStrategy** call with the following strategy:
+* Perform a **setPersonalizationStrategy** call with the following strategy but do not consider a `{"status":429,"message":"Number of strategy saves exceeded for the day"}` as an error since this is a rate limit we cannot change on the Personalization side.
 ```
 {
    eventsScoring: [
