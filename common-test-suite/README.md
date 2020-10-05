@@ -694,8 +694,7 @@ For instance:  python-2019-01-01-10-10-05-unknown-0
 * Update the `maxHitsPerQuery` field to 42 of the key using **updateAPIKey**
 * Retrieve the added key using **getAPIKey** with the key value that was collected earlier (loop until the call succeeds, this is the only way to make this work) and check that the `maxHitsPerQuery` field of the returned key has indeed changed
 * Remove the key using **deleteAPIKey**
-* Loop until the removed key cannot be found anymore using **getAPIKey** (loop until the call succeeds, this is the only way to make this work)
-* Restore the previous deleted key using **restoreApiKey** method.
+* Loop until the removed key gets restored using **restoreApiKey** method. (loop until the call succeeds, this is the only way to make this work)
 * Retrieve the restored key using **getAPIKey** with the key value that was collected earlier (loop until the call succeeds, this is the only way to make this work)
 * Remove the key using **deleteAPIKey**
 
