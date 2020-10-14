@@ -8,7 +8,7 @@
 - [Objects](#objects)
 - [Responses](#responses)
 
-## `search_client` interface
+## `account_client` interface
 
 - Cross-application **and** cross-index operations
 
@@ -37,12 +37,6 @@ interface search_client {
     function copy_settings(source: string, destination: string, opts: request_options) return task_updated_response
     function copy_synonyms(source: string, destination: string, opts: request_options) return task_updated_response
     function copy_index(source: string, destination: string, scopes: [scope], opts: request_options) return task_updated_response
-
-    // Move index methods
-    function move_rules(source: string, destination: string, opts: request_options) return task_updated_response
-    function move_settings(source: string, destination: string, opts: request_options) return task_updated_response
-    function move_synonyms(source: string, destination: string, opts: request_options) return task_updated_response
-    function move_index(source: string, destination: string, scopes: [scope], opts: request_options) return task_updated_response
 
     // API key methods
     function get_api_key(keyID: string, opts: request_options) return key
@@ -236,7 +230,7 @@ struct object_with_position<T> {
 
 ## Responses
 
-All response objects are implemented the `waitable` interface in order for the
+All response objects are implemented with the `waitable` interface in order for the
 user to be able to wait their completion without dealing with the low-level
 details.
 

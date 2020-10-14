@@ -333,9 +333,9 @@ This naming enables us to run tests in parallel, across different environments
 
 * Add the following regular (n-way) synonym using **saveSynonym** and collect the taskID
 
-| ObjectID | Synonym                                            |
-| -------- | -------------------------------------------------- |
-| `"gba"`  | `[ "gba", "gameboy advance", "game boy advance" ]` |
+| ObjectID | Type         | Synonym                                            |
+| -------- | ----------------------------------------------------------------- |
+| `"gba"`  |  `"synonym"` | `[ "gba", "gameboy advance", "game boy advance" ]` |
 
 * Add the following synonyms using **saveSynonyms** and collect the taskID
 
@@ -399,7 +399,7 @@ This naming enables us to run tests in parallel, across different environments
 }
 ```
 
-* Save the following rules using **batchRules** and collect the taskID
+* Save the following rules using **saveRules** and collect the taskID
 
 ```
 [
