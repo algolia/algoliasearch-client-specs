@@ -33,6 +33,7 @@ across all our official API clients:
  - [algolia/algoliasearch-client-python](https://github.com/algolia/algoliasearch-client-python)
  - [algolia/algoliasearch-client-ruby](https://github.com/algolia/algoliasearch-client-ruby)
  - [algolia/algoliasearch-client-scala](https://github.com/algolia/algoliasearch-client-scala)
+ - [algolia/algoliasearch-client-swift](https://github.com/algolia/algoliasearch-client-swift)
 
 ## 📦 What's included
 
