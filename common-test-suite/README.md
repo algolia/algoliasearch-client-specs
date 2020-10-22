@@ -128,7 +128,9 @@ This naming enables us to run tests in parallel, across different environments
 * Alter 2 records with **partialUpdateObjects** and collect taskID/objectID
 * Wait for all collected tasks to terminate with **waitTask**
 * Retrieve all the previously altered records with **getObject** and check their content against the modified records
+* Add 1 record with **saveObject** with an objectID and a tag `algolia` and wait for the task to finish
 * Delete the first record with **deleteObject** and collect taskID
+* Delete the record containing the tag `algolia` with **deleteBy** and the `tagFilters` option and collect taskID
 * Delete the 5 remaining first records with **deleteObjects** and collect taskID
 * Delete the 1000 remaining records with **clearObjects** and collect taskID
 * Wait for all collected tasks to terminate
