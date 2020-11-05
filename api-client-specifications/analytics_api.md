@@ -76,6 +76,7 @@ struct variant_response {
     index: string
     noResultCount: int
     searchCount: int
+    trackedSearchCount: int
     trafficPercentage: int
     userCount: int
 }
