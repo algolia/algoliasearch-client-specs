@@ -1,15 +1,20 @@
-# Recommendation API clients specifications
+# Personalization API clients specifications
 
 ## Table of Contents
 
-  - [`recommendation_client` interface](#recommendation_client-interface)
+  - [`personalization_client` interface](#personalization_client-interface)
   - [Objects](#objects)
   - [Responses](#responses)
 
-## `recommendation_client` interface
+## `personalization_client` interface
 
 ```java
-interface recommendation_client {
+interface personalization_client {
+    function get_personalization_profile(userToken: string, opts: request_options)
+    return get_personalization_profile_response
+
+    function delete_personalization_profile(userToken: string, opts: request_options)
+    return void
 
     function get_personalization_strategy(opts: request_options)
     return get_personalization_strategy_response
@@ -45,6 +50,14 @@ struct facets_scoring {
 ```
 
 ## Responses
+
+```java
+struct get_personalization_profile_response {
+  userToken: string,
+  lastEventAt: datetime,
+  scores: object
+}
+```
 
 ```java
 struct get_personalization_strategy_response {
