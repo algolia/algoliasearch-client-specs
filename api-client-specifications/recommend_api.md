@@ -1,15 +1,15 @@
-# Recommendations API clients specifications
+# Recommend API clients specifications
 
 ## Table of Contents
 
-- [`recommendations_client` interface](#recommendations_client-interface)
+- [`recommend_client` interface](#recommend_client-interface)
 - [Objects](#objects)
 - [Responses](#responses)
 
-## `recommendations_client` interface
+## `recommend_client` interface
 
 ```java
-interface recommendations_client {
+interface recommend_client {
     function get_recommendations(queries: [recommendations_query]) return get_recommendations_response
     function get_related_products(queries: [related_products_query]) return get_recommendations_response
     function get_frequently_bought_together(queries: [frequently_bought_together_query]) return get_recommendations_response
