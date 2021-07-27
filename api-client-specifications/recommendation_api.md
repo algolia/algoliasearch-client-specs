@@ -31,7 +31,7 @@ struct recommendations_query {
     model: 'bought-together' | 'related-products',
     objectID: string,
     // optional
-    threshold: int,
+    threshold: float, // default 0, between 0 and 100
     maxRecommendations: int,
     queryParameters: recommendations_search_options,
     fallbackParameters: recommendations_search_options
@@ -43,7 +43,7 @@ struct related_products_query {
     indexName: string,
     objectID: string,
     // optional
-    threshold: int,
+    threshold: float, // default 0, between 0 and 100
     maxRecommendations: int,
     queryParameters: recommendations_search_options,
     fallbackParameters: recommendations_search_options
@@ -55,7 +55,7 @@ struct frequently_bought_together_query {
     indexName: string,
     objectID: string,
     // optional
-    threshold: int,
+    threshold: float, // default 0, between 0 and 100
     maxRecommendations: int,
     queryParameters: recommendations_search_options,
 }
