@@ -8,4 +8,5 @@ API clients as well as some details regarding some internal implementations.
 - [Search API](search_api.md)
 - [Analytics API](analytics_api.md)
 - [Insights API](insights_api.md)
-- [Recommendation API](recommendation_api.md)
+- [Personalization API](personalization_api.md)
+- [Recommendations API](recommendations_api.md)
