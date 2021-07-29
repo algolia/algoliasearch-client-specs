@@ -33,7 +33,7 @@
     * [AA testing](#aa-testing)
   * [Tests (insights)](#tests-insights)
     * [Sending events](#sending-events)
-  * [Tests (recommendation)](#tests-recommendation)
+  * [Tests (personalization)](#tests-personalization)
     * [Personalization Strategy](#personalization-strategy)
   * [Tests (backward compatibility)](#tests-backward-compatibility)
     * [Old settings](#old-settings)
@@ -1069,11 +1069,11 @@ Where:
 
 ---
 
-### Tests (recommendation)
+### Tests (personalization)
 
 #### Personalization Strategy
 
-* Instantiate the recommendation client
+* Instantiate the personalization client
 * Perform a **setPersonalizationStrategy** call with the following strategy but do not consider a `{"status":429,"message":"Number of strategy saves exceeded for the day"}` as an error since this is a rate limit we cannot change on the Personalization side.
 ```
 {
