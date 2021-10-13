@@ -14,7 +14,7 @@ interface personalization_client {
     return get_personalization_profile_response
 
     function delete_personalization_profile(userToken: string, opts: request_options)
-    return void
+    return delete_personalization_profile_response
 
     function get_personalization_strategy(opts: request_options)
     return get_personalization_strategy_response
@@ -56,6 +56,13 @@ struct get_personalization_profile_response {
   userToken: string,
   lastEventAt: datetime,
   scores: object
+}
+```
+
+```java
+struct delete_personalization_profile_response {
+  userToken: string,
+  deletedUntil: datetime
 }
 ```
 
