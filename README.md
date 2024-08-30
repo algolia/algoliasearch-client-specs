@@ -1,3 +1,7 @@
+> [!WARNING]  
+> This repository is deprecated in favor of https://github.com/algolia/api-clients-automation.  
+> You can still find the spec for the legacy clients in this repository, but they will not be updated.
+
 <p align="center">
   <a href="https://www.algolia.com">
     <img alt="Algolia banner" src="https://raw.githubusercontent.com/algolia/algoliasearch-client-common/master/readme-banner.png" >
